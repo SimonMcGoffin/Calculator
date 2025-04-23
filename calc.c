@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//Week 1 Progress
+
+int main() {
+    char operator;
+    double num1, num2, result;
+
+    printf("Simple Command-Line Calculator\n");
+    printf("Supported operations: +, -, *, /\n");
+
+    // Prompt user for input
+    printf("Enter expression: ");
+    if (scanf("%lf %c %lf", &num1, &operator, &num2) != 3) {
+        printf("Invalid input format.\n");
+        return 1;
+    }
+
+    // Perform calculation
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 == 0) {
+                printf("Error: Division by zero.\n");
+                return 1;
+            }
+            result = num1 / num2;
+            break;
+        default:
+            printf("Unsupported operation '%c'.\n", operator);
+            return 1;
+    }
+
+    // Output result
+    printf("Result: %.2lf\n", result);
+    return 0;
+}
